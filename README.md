@@ -28,7 +28,3 @@
 | Nghiệp vụ + Transaction | `MuonTraService.LapPhieuMuon / TraSach` |
 | RDLC: phiếu mượn, báo cáo lọc ngày | `Reports/*.rdlc`, `frmInPhieuMuon`, `frmBaoCao` |
 | Điểm cộng: App.config, biểu đồ, QR | `frmCauHinhServer`, `frmMain` (Chart), `frmTheDocGia` (QR) |
-
-## Việc nhóm cần tự làm
-- Báo cáo Word + bảng WBS + video demo + link GitHub (đề cấm dùng AI viết báo cáo).
-- (Điểm cộng) Đóng gói Setup.exe: dùng Visual Studio Installer Projects hoặc Inno Setup.
