@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using Label = System.Windows.Forms.Label;   // tránh trùng tên với Charting.Label
 using QuanLyThuVien.Helpers;
 using QuanLyThuVien.Repositories;
 
@@ -85,7 +86,7 @@ namespace QuanLyThuVien.Forms
 
             // Ẩn menu cha nếu không còn mục con nào hiển thị
             foreach (ToolStripMenuItem root in menu.Items)
-                root.Visible = root.DropDownItems.Cast<ToolStripItem>().Any(i => i.Visible);
+                root.Available = root.DropDownItems.Cast<ToolStripItem>().Any(i => i.Available);
         }
 
         private ToolStripMenuItem Root(string text)
@@ -97,7 +98,7 @@ namespace QuanLyThuVien.Forms
 
         private void Item(ToolStripMenuItem root, string text, string quyen, Func<Form> create)
         {
-            var it = new ToolStripMenuItem(text) { Visible = Session.Has(quyen) };
+            var it = new ToolStripMenuItem(text) { Available = Session.Has(quyen) };
             it.Click += (s, e) =>
             {
                 using (var f = create()) f.ShowDialog(this);
