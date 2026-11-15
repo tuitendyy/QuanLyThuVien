@@ -80,11 +80,11 @@ namespace QuanLyThuVien.Repositories
 
         public List<ChiTietMuonDto> GetChiTietTheoNgay(DateTime tuNgay, DateTime denNgay)
         {
-            DateTime from = tuNgay.Date, to = denNgay.Date.AddDays(1);
+            DateTime ngayBatDau = tuNgay.Date, ngayKetThuc = denNgay.Date.AddDays(1);
             using (var db = new LibraryContext())
             {
                 int phi = QuyDinhRepository.GetValue(db, QuyDinhRepository.PhiPhatMoiNgay);
-                var list = Query(db).Where(x => x.NgayMuon >= from && x.NgayMuon < to)
+                var list = Query(db).Where(x => x.NgayMuon >= ngayBatDau && x.NgayMuon < ngayKetThuc)
                                     .OrderBy(x => x.NgayMuon).ThenBy(x => x.MaPhieu).ToList();
                 return Tinh(list, phi);
             }
@@ -92,13 +92,13 @@ namespace QuanLyThuVien.Repositories
 
         public List<PhieuMuonDto> GetPhieu(DateTime tuNgay, DateTime denNgay)
         {
-            DateTime from = tuNgay.Date, to = denNgay.Date.AddDays(1);
+            DateTime ngayBatDau = tuNgay.Date, ngayKetThuc = denNgay.Date.AddDays(1);
             using (var db = new LibraryContext())
             {
                 var q = from pm in db.PhieuMuons
                         join dg in db.DocGias on pm.MaDocGia equals dg.MaDocGia
                         join nd in db.NguoiDungs on pm.MaND equals nd.MaND
-                        where pm.NgayMuon >= from && pm.NgayMuon < to
+                        where pm.NgayMuon >= ngayBatDau && pm.NgayMuon < ngayKetThuc
                         orderby pm.NgayMuon descending
                         select new PhieuMuonDto
                         {
