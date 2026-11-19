@@ -1,9 +1,3 @@
-/* =====================================================================
-   FILE 01 - SCRIPT TẠO CƠ SỞ DỮ LIỆU: QUẢN LÝ THƯ VIỆN ĐẠI HỌC
-   SQL Server 2016+  |  Chạy toàn bộ file trong SSMS
-   Mật khẩu băm SHA-256, lưu dạng HEX IN HOA (64 ký tự)
-   Tài khoản mẫu:  admin / admin123   thuthu1 / thuthu123   docgia1 / docgia123
-   ===================================================================== */
 USE master;
 GO
 IF DB_ID(N'QuanLyThuVien') IS NOT NULL
